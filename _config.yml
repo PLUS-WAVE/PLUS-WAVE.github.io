@@ -118,7 +118,7 @@ sharing:
 ## => Comments
 ##############################
 comments:
-  provider: gitalk # false (default), "disqus", "gitalk", "valine", "custom"
+  provider: disqus # false (default), "disqus", "gitalk", "valine", "custom"
 
   ## Disqus
   disqus:
@@ -130,7 +130,6 @@ comments:
     clientID    : 4e287de68b70b1a68146 # GitHub Application Client ID
     clientSecret: 85a03bdd3c33538361e16460cd179121dbaf98bb # GitHub Application Client Secret
     repository  : PLUS-WAVE.github.io # GitHub repo
-    proxy: https://netnr-proxy.cloudno.de/https://github.com/login/oauth/access_token
     owner       : PLUS-WAVE # GitHub repo owner
     admin: # GitHub repo owner and collaborators, only these guys can initialize GitHub issues, IT IS A LIST.
       PLUS-WAVE # - your GitHub Id
