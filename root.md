@@ -16,9 +16,9 @@ article_header:
 ---
 
 <style>
-  /* .page__header .header__brand .path {
+  .page__header .header__brand .path {
     fill: rgba(255, 255, 255, .5);
-  } */
+  }
   .hero--dark{
     height: 100vh;
   }
