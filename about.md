@@ -42,7 +42,8 @@ key: page-about
 
 > 如果这些能帮到你，我十分荣幸！😋
 
-> 注意：本网站的图床在github上，所以用魔法才能正常显示！😭 {:.warning}
+注意：本网站的图床在github上，所以用魔法才能正常显示！😭 
+{:.warning}
 
 这个网站是我第一次尝试构建个人网站，特别感谢 [Tian Qi](https://github.com/kitian616) 大佬的 **[TeXt-theme](https://github.com/kitian616/jekyll-TeXt-theme)** `💎 🐳 A super customizable Jekyll theme` 
 
