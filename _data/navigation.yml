@@ -72,9 +72,9 @@ layouts:
       - title:  2 构造函数
         url:    /2023/07/17/2-构造函数.html
       - title:  3 参数传递与返回值——引用
-        url:    /2023/07/19/3-参数传递与返回值——引用.html
+        url:    /2023/07/19/3-参数传递与返回值-引用.html
       - title:  4 友元 friend
-        url:    /2023/07/20/4-友元 friend.html
+        url:    /2023/07/20/4-友元-friend.html
       - title:  5 操作符重载与临时对象
         url:    /2023/07/28/5-操作符重载与临时对象.html
       
