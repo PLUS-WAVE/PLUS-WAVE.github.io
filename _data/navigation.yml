@@ -81,3 +81,5 @@ layouts:
         url:    /2023/07/31/6-带指针的类-三大函数.html
       - title:  7 堆，栈，内存管理
         url:    /2023/08/01/7-堆-栈-内存管理.html
+      - title:  8 静态 模板 namespace
+        url:    /2023/08/02/8-静态-模板-namespace.html
