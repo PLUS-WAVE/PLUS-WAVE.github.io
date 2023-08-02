@@ -83,3 +83,5 @@ layouts:
         url:    /2023/08/01/7-堆-栈-内存管理.html
       - title:  8 静态 模板 namespace
         url:    /2023/08/02/8-静态-模板-namespace.html
+      - title:  9 复合 委托
+        url:    /2023/08/03/9-复合-委托.html
