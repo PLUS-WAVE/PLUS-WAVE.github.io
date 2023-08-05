@@ -85,3 +85,5 @@ layouts:
         url:    /2023/08/02/8-静态-模板-namespace.html
       - title:  9 复合 委托
         url:    /2023/08/03/9-复合-委托.html
+      - title:  10 继承与虚函数
+        url:    /2023/08/06/10-继承与虚函数.html
