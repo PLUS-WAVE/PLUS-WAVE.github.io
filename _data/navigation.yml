@@ -87,3 +87,8 @@ layouts:
         url:    /2023/08/03/9-复合-委托.html
       - title:  10 继承与虚函数
         url:    /2023/08/06/10-继承与虚函数.html
+
+  - title:      C++兼谈对象模型
+    children:
+      - title:  1 转换
+        url:    /2023/08/08/1-转换.html
