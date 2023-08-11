@@ -2,7 +2,7 @@
 title: 4 specialization 特化
 tags: C++
 show_author_profile: true
-key: Cpp_study_144
+key: Cpp_study_14
 
 layout: article
 aside:
