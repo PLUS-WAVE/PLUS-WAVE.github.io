@@ -87,7 +87,9 @@ layouts:
         url:    /2023/08/03/9-复合-委托.html
       - title:  10 继承与虚函数
         url:    /2023/08/06/10-继承与虚函数.html
-
+      - title:  C++ Part1 面向对象编程合集
+        url:    /2023/08/16/C++-Part1-面向对象编程合集.html
+     
   - title:      C++兼谈对象模型
     children:
       - title:  1 转换
@@ -104,3 +106,5 @@ layouts:
         url:    /2023/08/14/6-多态-虚机制.html
       - title:  7 reference、const、new/delete
         url:    /2023/08/15/7-reference-const-newdelete.html
+      - title:  C++ Part2 兼谈对象模型合集
+        url:    /2023/08/17/C++-Part2-兼谈对象模型合集.html
