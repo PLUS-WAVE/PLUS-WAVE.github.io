@@ -40,6 +40,17 @@ header:
 
   - titles:
       # @start locale config
+      en      : &EN       FriendLinks
+      en-GB   : *EN
+      en-US   : *EN
+      en-CA   : *EN
+      en-AU   : *EN
+      zh-Hans : &ZH_HANS  友链
+      # @end locale config
+    url: /Links.html
+    
+  - titles:
+      # @start locale config
       en      : &EN       About
       en-GB   : *EN
       en-US   : *EN
