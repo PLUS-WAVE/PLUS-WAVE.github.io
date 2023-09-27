@@ -13,5 +13,5 @@ key: page-Links
 comment: false
 ---
 
-![LYY](https://raw.githubusercontent.com/PLUS-WAVE/blog-image/master/img/blog/2023-09-27/lyy.png){:.circle.border.shadow} [cakndex](https://cakndex.github.io/)
+### <img src="https://raw.githubusercontent.com/PLUS-WAVE/blog-image/master/img/blog/2023-09-27/lyy.png" alt="LYY" style="zoom: 15%;" /> [cakndex](https://cakndex.github.io/)
 
