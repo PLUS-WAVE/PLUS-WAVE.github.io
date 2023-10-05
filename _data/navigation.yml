@@ -122,6 +122,19 @@ layouts:
 
   - title:      C++ STL+泛式编程
     children:
+      - title:  1 STL概述 + 2 OOPvsGP
+        url:    /2023/09/27/1-STL概述-+-2-OOPvsGP.html
+      - title:  3 容器
+        url:    /2023/09/27/3-容器.html
+      - title:  4 分配器
+        url:    /2023/09/30/4-分配器.html
+      - title:  5 迭代器
+        url:    /2023/10/01/5-迭代器.html
+      - title:  6 算法 + 7 仿函数
+        url:    /2023/10/03/6-算法-+-7-仿函数.html
+      - title:  8 适配器
+        url:    /2023/10/04/8-适配器.html
+      - title:  9 STL周围
+        url:    /2023/10/05/9-STL周围.html
       - title:  C++ STL+泛式编程合集
         url:    /2023/09/25/C++-STL+泛式编程合集.html
-
