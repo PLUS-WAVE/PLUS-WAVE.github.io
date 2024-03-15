@@ -11,7 +11,7 @@ aside:
 
 
 
-我们以采用 GitHub 上的开源库 [cuda-bundle-adjustment](https://github.com/fixstars/cuda-bundle-adjustment) 为例，步骤如下：
+我们以采用 GitHub 上的开源库 [cuda-bundle-adjustment](https://github.com/fixstars/cuda-bundle-adjustment) 为例，其不能直接用vcpkg进行安装，只能通过cmake编译后链接到VS2022。
 
 将 cuda-bundle-adjustment 库通过 CMake 编译链接到 Visual Studio 2022 步骤操作：
 
