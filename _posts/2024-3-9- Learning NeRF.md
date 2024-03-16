@@ -1,5 +1,5 @@
 ---
-title: 我的NeRF学习——初步认识
+title: NeRF学习——NeRF初步认识
 tags: CV
 show_author_profile: true
 key: CV_7
