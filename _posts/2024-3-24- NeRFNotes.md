@@ -1,5 +1,5 @@
 ---
-title: 学习NeRF——基于pytorch代码复现 1(Dataset)
+title: 学习NeRF——基于pytorch代码复现的笔记
 tags: CV
 show_author_profile: true
 key: CV_12
