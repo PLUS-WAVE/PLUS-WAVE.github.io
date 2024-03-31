@@ -95,11 +95,13 @@ aside:
 
 核心函数包括：`__init__`，`__forward__`
 
-init函数负责定义网络所必需的模块，forward函数负责接收dataset的输出，利用定义好的模块，计算输出。
+- `init` 函数负责定义网络所必需的模块
 
-对于NeRF来说，我们需要在init中定义两个mlp以及encoding方式，在forward函数中，使用rays完成计算。
+- `forward`函数负责接收Dataset的输出，利用定义好的模块，计算输出
 
-定义了两个主要的神经网络模型：`NeRF` 和 `Network`。
+对于NeRF来说，我们需要在init中定义两个 MLP 以及 encoding 方式，在forward函数中，使用`rays`**完成计算**
+
+定义了两个主要的神经网络模型：`NeRF` 和 `Network`
 
 #### 1.2.1 NeRF 类
 
