@@ -21,7 +21,7 @@ aside:
 
 - `getitem`函数负责在运行时提供给网络一次训练需要的输入，以及 groundtruth 的输出
 
-  例如对NeRF，分别是1024条 rays 以及1024个 RGB 值
+  例如对NeRF，分别是1024条 rays 以及1024个 RGB 值<!--more-->
 
 - `len`函数是训练或者测试的数量：`getitem`函数获得的`index`值通常是`[0, len-1]`
 
