@@ -126,12 +126,43 @@ aside:
 - 结构
 
   - `__init__` 方法中初始化了整个网络模型，包括定义了两个 `NeRF` 模型（一个粗网络和一个精细网络），并根据配置参数进行设置
+
   - `batchify` 方法用于将函数应用于较小的批次数据
-  - `forward` 方法
+
+  - `network_query_fn` 方法，即网络查询函数，准备输入并将其传递给网络，并输出结果，使用 `batchify` 将一批一批的数据传入NeRF网络进行 `forward`
+
+  - `forward` 方法，从 `batch` 中得到 dataloader 的数据，计算并创建射线，使用 `render_utils` 中的 `batchify_rays` 进行放入网络得到结果，再渲染射线得到 `render_rays` 返回的字典（即最后的结果）：
+
+    ```python
+    - 'rgb_map' (torch.Tensor): 每条光线的估计 RGB 颜色。形状：[num_rays, 3]。
+    - 'disp_map' (torch.Tensor): 每条光线的视差图（深度图的倒数）。形状：[num_rays]。
+    - 'acc_map' (torch.Tensor): 沿每条光线的权重总和。形状：[num_rays]。
+    - 'rgb0' (torch.Tensor): 粗模型的输出 RGB。见 rgb_map。形状：[num_rays, 3]。
+    - 'disp0' (torch.Tensor): 粗模型的输出视差图。见 disp_map。形状：[num_rays]。
+    - 'acc0' (torch.Tensor): 粗模型的输出累积不透明度。见 acc_map。形状：[num_rays]。
+    - 'z_std' (torch.Tensor): 每个样本沿光线的距离的标准差。形状：[num_rays]。
+    ```
+
+    再对结果进行整理得到一个列表
+
+通过`dataloader`的`batch`传入网络，最终得到整理后的结果：
+
+一个包含了所有渲染结果和相关信息的列表
+
+前面 0、1、2 对应 `'rgb_map'`、`'disp_map'`、`'acc_map'`
+
+<img src="https://raw.githubusercontent.com/PLUS-WAVE/blog-image/master/img/blog/2024-03-31/image-20240331160722758.png" alt="image-20240331160722758" style="zoom:50%;" />
+
+所有张量类型如下
+
+```python
+dtype = torch.float64
+device = device(type='cuda', index=0)
+```
 
 #### 1.2.3 Render
 
-TODO
+增加 `render_utils`，并修改 `raw2outputs()`、`render_rays()` 函数使数据移动至 cuda 进行计算
 
 
 
