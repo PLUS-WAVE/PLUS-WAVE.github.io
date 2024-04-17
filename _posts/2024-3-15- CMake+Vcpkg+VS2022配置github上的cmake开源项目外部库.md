@@ -58,8 +58,14 @@ aside:
    > 特别提醒：注意属性上方的“**配置**”和“**平台**”要和运行项目时的一致
    >
 
-   ![image-20240315213847838](https://raw.githubusercontent.com/PLUS-WAVE/blog-image/master/img/blog/2024-03-15/image-20240315213847838.png)
+   <img src="https://raw.githubusercontent.com/PLUS-WAVE/blog-image/master/img/blog/2024-03-15/image-20240315213847838.png" alt="image-20240315213847838" style="zoom:50%;" />
 
-   ![image-20240315213911989](https://raw.githubusercontent.com/PLUS-WAVE/blog-image/master/img/blog/2024-03-15/image-20240315213911989.png)
+   <img src="https://raw.githubusercontent.com/PLUS-WAVE/blog-image/master/img/blog/2024-03-15/image-20240315213911989.png" alt="image-20240315213911989" style="zoom:50%;" />
+
+7. 并且添加静态库文件的完整文件名称到如下地方：
+
+   <img src="https://raw.githubusercontent.com/PLUS-WAVE/blog-image/master/img/blog/2024-04-17/image-20240417155950478.png" alt="image-20240417155950478" style="zoom:50%;" />
+
+   这样与链接器中的常规的附加库目录就构成了完整的 `.lib` 文件的路径：`./lib/cuda_bundle_adjustment.lib`
 
  完成！运行！
