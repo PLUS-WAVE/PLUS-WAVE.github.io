@@ -166,6 +166,29 @@ device = device(type='cuda', index=0)
 
 
 
+### 3 Loss & Evaluate
+
+#### 3.1 Loss
+
+loss 模块主要为 `NetworkWrapper` 的类。`forward` 方法即是 loss 计算的过程。
+
+- 方法中，首先通过 `self.net(batch)` 调用传入的神经网络模型进行**预测**
+- 然后计算预测的RGB值与目标RGB值之间的MSE，并将其转换为PSNR。如果输出中包含rgb0（即包含粗网络预测的值），则还会计算粗网络的预测值RGB与目标RGB值之间的MSE和PSNR。
+- 最后，将所有的统计量（包括PSNR和损失）添加到scalar_stats字典中，并返回。
+
+
+
+#### 3.2 Evaluate
+
+evaluate 模块在这个项目中主要用于评估模型的性能。并将评估结果保存为图像文件和JSON文件。
+
+- 计算MSE和PSNR，并将它们添加到相应的列表中。
+- 然后，它生成一个保存图像的路径，并将预测的RGB值和目标RGB值通过渲染得到对应的图片（`render` 还在改造中），保存在对应的路径中。
+
+
+
+问题：目前模型能跑起来，但不知道为什么GPU吃不满，跑的时候只有60%，感觉挺慢的
+
 ## 2 Issues
 
 ### 2.1 DataLoader 的多进程 pickle
