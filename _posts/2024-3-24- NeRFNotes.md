@@ -21,7 +21,7 @@ aside:
 
 - `getitem`函数负责在运行时提供给网络一次训练需要的输入，以及 groundtruth 的输出
 
-  例如对NeRF，分别是1024条 rays 以及1024个 RGB 值
+  例如对NeRF，分别是1024条 rays 以及1024个 RGB 值<!--more-->
 
 - `len`函数是训练或者测试的数量：`getitem`函数获得的`index`值通常是`[0, len-1]`
 
@@ -317,4 +317,134 @@ save_path = f"{base_name}_{now_str}_epoch_{cfg.train.epoch}{ext}"
   exit(0)
   ```
 
-  
+
+### 2.4 evaluate 推理显存爆炸
+
+在运行 evaluate 模块时，我用模型对一张图片进行推理，发现显存爆炸增长，经过一番寻找之后，找到了问题：
+
+- 在运行 *run.py* 的 evaluate 模块时，`evaluator.evaluate(output, batch)`这句话没有在 `torch.no_grad()` 中导致的。
+
+~~修改只需要加一个缩减即可：~~
+
+```python
+for i, batch in enumerate(tqdm.tqdm(data_loader)):
+    for k in batch:
+        if k != 'meta':
+            batch[k] = batch[k].cuda()
+    with torch.no_grad():
+        torch.cuda.synchronize()
+        start_time = time.time()
+        output = network(batch)
+        torch.cuda.synchronize()
+        end_time = time.time()
+        net_time.append(end_time - start_time)
+        if i == len(data_loader) - 1:
+            evaluator.evaluate(output, batch)
+evaluator.summarize()
+```
+
+更新：重构了evaluate的代码，之前是我理解出现了问题，在evaluate中再一次进行了模型推理，现在不用了，代码恢复为以前的
+
+### 2.5 训练问题
+
+#### 2.5.1 尝试一
+
+训练中：在 Dateset 的 `__getitem__` 函数中进行 shuffle，导致每次迭代都会 shuffle 整个数据一次，耗费大量时间
+
+- 在经过10000次迭代（20个epoch）后：
+
+  - psnr 整体是呈现一个上升的趋势，在10000次迭代后在24左右
+
+    <img src="https://raw.githubusercontent.com/PLUS-WAVE/blog-image/master/img/blog/2024-04-30/image-20240430195650221.png" alt="image-20240430195650221" style="zoom:50%;" />
+
+  - loss 从一开始整体下降，之后就一直在0.1225左右徘徊（感觉出现问题）没有明显的下降趋势
+
+    <img src="https://raw.githubusercontent.com/PLUS-WAVE/blog-image/master/img/blog/2024-04-30/image-20240430195519373.png" alt="image-20240430195519373" style="zoom:50%;" />
+
+- 分别在5000次和10000次迭代的时候 evaluate 了两次：
+
+  - 第一次：loss = 0.1201，psnr = 22.94，mse = 0.005223
+  - 第二次：loss = 0.1191，psnr = 23.8，mse = 0.004276
+
+  推理得到的图像如下：
+
+  <img src="https://raw.githubusercontent.com/PLUS-WAVE/blog-image/master/img/blog/2024-04-30/060.png" style="zoom: 80%;" />
+
+> 其实在训练时获取光线时本来就是打乱了的，传入 `__getitem__` 的 `index` 就是随机的，但是发现在移除所有光线的 shuffle 后，训练出现问题（一直 `psnr = inf`，`loss = 0`），具体原因还未知、
+
+#### 2.5.2 尝试二
+
+现在我将 shuffle 放到了 `__init__` 中去，只在创建数据集时进行一次 shuffle，训练正常进行，时间相比以前有了提升！
+
+但出过拟合问题！
+
+- 在2500次迭代（5个epoch）后：
+
+  - loss 持续下降到 0.000292，停止后再次开始训练时断崖上升
+
+    <img src="https://raw.githubusercontent.com/PLUS-WAVE/blog-image/master/img/blog/2024-04-30/image-20240430203600663.png" alt="image-20240430203600663" style="zoom:50%;" />
+
+  - psnr 持续上升到40，停止后再次开始训练时断崖下降
+
+    <img src="https://raw.githubusercontent.com/PLUS-WAVE/blog-image/master/img/blog/2024-04-30/image-20240430203714312.png" alt="image-20240430203714312" style="zoom: 50%;" />
+
+- 使用 run.py 的 evaluate 模块进行测试：
+
+  输出的图像与指标不符，**loss = 0.055**，**psnr = 15.4939**，**mse = 0.0282**；具体生成图像也是比较糟糕，只能看到大致雏形
+
+  <img src="https://raw.githubusercontent.com/PLUS-WAVE/blog-image/master/img/blog/2024-04-30/image-20240430212522124.png" alt="image-20240430212522124" style="zoom: 80%;" />
+
+问题：
+
+发现了问题出现在数据集的 `__getitem__` 上，每次传入的 `index` 是随机图片索引，只有只有 `1~200`，只能得到前面的 `1~200*1024` 的数据太狭隘了，导致了过拟合。
+
+目前解决方案在 `index` 的基础上乘上图像的宽高：
+
+```python
+index = index * self.H * self.W
+```
+
+#### 2.5.3 尝试三
+
+经过上述的修改，并且参考 nerf-pytorch 的代码在每隔一段时间（我现在暂时设定`self.N_rays * cfg.ep_iter` 次，即 `1024*500`）就会重新打乱一遍所有的32000000条光线
+
+我将代码放到了阿里云的服务器上进行训练，经过**10.48小时**的训练，总共迭代了**71,000次**（142个epoch）
+
+- 训练：
+
+  - loss 持续下降，目前在0.003左右波动
+
+    <img src="https://raw.githubusercontent.com/PLUS-WAVE/blog-image/master/img/blog/2024-05-01/image-20240501085109274.png" alt="image-20240501085109274" style="zoom: 50%;" />
+
+  - psnr 持续上升，目前在32左右波动
+
+    <img src="https://raw.githubusercontent.com/PLUS-WAVE/blog-image/master/img/blog/2024-05-01/image-20240501085258470.png" alt="image-20240501085258470" style="zoom:50%;" />
+
+- evaluate：我设定了每隔2500次迭代（5个epoch）就进行一次 evaluate，每次为了节省时间只用10张图片进行测试
+
+  **loss** 持续下降到**0.006**，**mse** 持续下降到**0.0018**，**psnr** 持续上升到**27.6134**
+
+  <img src="https://raw.githubusercontent.com/PLUS-WAVE/blog-image/master/img/blog/2024-05-01/image-20240501085755386.png" alt="image-20240501085755386" style="zoom: 67%;" />
+
+  得到的图片：
+
+  ![009](https://raw.githubusercontent.com/PLUS-WAVE/blog-image/master/img/blog/2024-05-01/009.png)
+
+  训练完后对整体（200张图片）进行了一次 evaluate：得到 psnr = 28.4860
+
+- 与尝试一进行对比：在10000次迭代左右，时间大大减少，且loss、psnr都更加优秀
+
+  <img src="https://raw.githubusercontent.com/PLUS-WAVE/blog-image/master/img/blog/2024-05-01/image-20240501090741066.png" alt="image-20240501090741066" style="zoom:50%;" />
+
+#### 2.5.4 问题
+
+**有时**开始训练时的psnr从9左右开始就会导致 psnr 不上升一直徘徊在9左右，loss 正常下降，**重新开始训练就有可能回归正常！**
+
+<img src="https://raw.githubusercontent.com/PLUS-WAVE/blog-image/master/img/blog/2024-04-30/image-20240430212144837.png" alt="image-20240430212144837" style="zoom:67%;" />
+
+尝试了5000次的迭代（10个epoch），测试出来图片如下：
+
+<img src="https://raw.githubusercontent.com/PLUS-WAVE/blog-image/master/img/blog/2024-04-30/lQLPKHHImplXjiHNAlTNBKqwQyL9R_cVfYgGGp3Cg3rNAA_1194_596.png" alt="lQLPKHHImplXjiHNAlTNBKqwQyL9R_cVfYgGGp3Cg3rNAA_1194_596" style="zoom: 50%;" />
+
+目前原因未知😭
+
