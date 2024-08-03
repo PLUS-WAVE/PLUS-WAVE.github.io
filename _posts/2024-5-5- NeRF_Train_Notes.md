@@ -13,6 +13,8 @@ aside:
 
 ## 训练问题
 
+训练从尝试一开始，记录了一步一步修改改进，到尝试三就基本完成复现！
+
 ### 1 尝试一
 
 训练中：在 Dateset 的 `__getitem__` 函数中进行 shuffle，导致每次迭代都会 shuffle 整个数据一次，耗费大量时间
@@ -114,10 +116,10 @@ index = index * self.H * self.W
 
 <img src="https://raw.githubusercontent.com/PLUS-WAVE/blog-image/master/img/blog/2024-04-30/lQLPKHHImplXjiHNAlTNBKqwQyL9R_cVfYgGGp3Cg3rNAA_1194_596.png" alt="lQLPKHHImplXjiHNAlTNBKqwQyL9R_cVfYgGGp3Cg3rNAA_1194_596" style="zoom: 50%;" />
 
-目前原因未知😭
+目前原因可能是初始化导致的😭（小问题，重新开始训练就行）
 
 #### 4.2 加载再训练
 
 当我将保存的模型加载接着训练的时候，我发现了 loss 相较于之前突然变大了再缓慢下降，psnr 也是相似的，一开始相较之前的要小再缓慢上升
 
-该问题目前还在测试中
+应该是存储和读取模型时的问题
