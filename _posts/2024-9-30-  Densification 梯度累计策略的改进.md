@@ -11,10 +11,6 @@ aside:
 
 
 
-用的 Gaussian Opacity Fields 的策略：
-
-
-
 在学习 StreetGS 代码中发现了其中的 Densification 策略与原 3DGS 不太一样，其是使用的 Gaussian Opacity Fields 中的一个的策略
 
 我们先来回忆一下 3DGS 中一个比较重要 contribution：自适应密度控制
