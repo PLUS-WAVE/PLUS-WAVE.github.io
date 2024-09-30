@@ -23,7 +23,7 @@ aside:
 
 2. `densify_and_clone` 克隆:
 
-   <img src="./assets/image-20240726103511004.png" alt="image-20240726103511004"  />
+   <img src="https://raw.githubusercontent.com/PLUS-WAVE/blog-image/master/img/blog/2024-09-30/image-20240726103511004.png" alt="image-20240726103511004"  />
 
    1. 筛选出梯度大于等于阈值的点。再进一步筛选出这些点中尺度小于等于场景范围的点。
 
