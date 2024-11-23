@@ -1,22 +1,21 @@
 ---
-pageLayout: home
-externalLinkIcon: false
+home: true
 config:
-  -
+ -
     type: hero
     full: true
     background: tint-plate
     hero:
-      name: Theme Plume
-      tagline: VuePress Next Theme
-      text: A simple, feature-rich, document & blog
+      name: I'm Jiawei Wang
+      tagline: PLUS-WAVE
+      text: Welcome to my personal blog, where I record my learning and life.
       actions:
         -
           theme: brand
-          text: Blog
-          link: /en/blog/
+          text: 📑Blogs
+          link: /blog/
         -
           theme: alt
           text: Github →
-          link: https://github.com/pengzhanbo/vuepress-theme-plume
+          link: https://github.com/PLUS-WAVE
 ---

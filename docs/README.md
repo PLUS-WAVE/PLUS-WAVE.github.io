@@ -6,7 +6,7 @@ config:
     full: true
     background: tint-plate
     hero:
-      name: 王嘉伟
+      name: I'm Jiawei Wang
       tagline: PLUS-WAVE
       text: 欢迎来到我的个人博客网站，记录了我的学习和生活。
       actions:
