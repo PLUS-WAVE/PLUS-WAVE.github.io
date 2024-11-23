@@ -1,22 +1,21 @@
 ---
-pageLayout: home
-externalLinkIcon: false
+home: true
 config:
-  -
+ -
     type: hero
     full: true
     background: tint-plate
     hero:
-      name: Theme Plume
-      tagline: VuePress Next Theme
-      text: 一个简约的，功能丰富的 vuepress 文档&博客 主题
+      name: 王嘉伟
+      tagline: PLUS-WAVE
+      text: 欢迎来到我的个人博客网站，记录了我的学习和生活。
       actions:
         -
           theme: brand
-          text: 博客
+          text: 📑博客
           link: /blog/
         -
           theme: alt
           text: Github →
-          link: https://github.com/pengzhanbo/vuepress-theme-plume
+          link: https://github.com/PLUS-WAVE
 ---
