@@ -21,6 +21,20 @@ export const zhNotes = defineNotesConfig({
       link: '/opengl/',
       sidebar: 'auto'
     },
+    {
+      dir: '3DV Course',
+      link: '/3dv/',
+      sidebar: [
+        '',
+        {
+          dir: '3DV Course',
+          text: '3DV Course Notes',
+          icon: 'gis:cube-3d',
+          collapsed: false,
+          items: 'auto',
+        },
+      ]
+    },
   ],
 })
 
