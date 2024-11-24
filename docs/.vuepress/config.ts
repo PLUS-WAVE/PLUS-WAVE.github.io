@@ -55,6 +55,12 @@ export default defineUserConfig({
       //   flowchart: true,
       },
 
+      markdownImage: {
+        // figure: true,
+        lazyload: true,
+        mark: true,
+        size: true,
+    },
       /**
        *  markdown power
        * @see https://theme-plume.vuejs.press/config/plugin/markdown-power/
