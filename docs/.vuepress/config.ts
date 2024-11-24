@@ -27,14 +27,13 @@ export default defineUserConfig({
   theme: plumeTheme({
     // 添加您的部署域名
     hostname: 'https://plus-wave.github.io/',
-    copyright: 'CC-BY-NC-SA-4.0',
+    // copyright: 'CC-BY-NC-SA-4.0',
 
     contributors: {
-      mode: 'block',
+      mode: 'inline',
       info: [
         {
-          username: 'PLUS-WAVE', // github username
-          alias: ['Jiawei Wang'], // 别名，本地 git 配置中的用户名
+          name: 'Jiawei Wang',
         }
       ]
     },
@@ -44,7 +43,10 @@ export default defineUserConfig({
       createTime: true, // 是否生成创建时间
       title: true, // 是否生成标题
     },
+    
     plugins: {
+      git: true,
+
       /**
        * Shiki 代码高亮
        * @see https://theme-plume.vuejs.press/config/plugins/code-highlight/

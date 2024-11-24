@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "description": "PLUS-WAVE's Blog Site",
   "packageManager": "pnpm@9.14.2",
-  "author": "PLUS_WAVE <wangplus_wave@foxmail.com>",
+  "author": "PLUS-WAVE <wangplus_wave@foxmail.com>",
   "license": "MIT",
   "engines": {
     "node": "^18.20.0 || >=20.0.0"
