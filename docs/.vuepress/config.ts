@@ -26,7 +26,19 @@ export default defineUserConfig({
 
   theme: plumeTheme({
     // 添加您的部署域名
-    // hostname: 'https://your_site_url',
+    hostname: 'https://plus-wave.github.io/',
+    copyright: 'CC-BY-NC-SA-4.0',
+
+    contributors: {
+      mode: 'block',
+      info: [
+        {
+          username: 'PLUS-WAVE', // github username
+          alias: ['Jiawei Wang'], // 别名，本地 git 配置中的用户名
+        }
+      ]
+    },
+
     autoFrontmatter: {
       permalink: true, // 是否生成永久链接
       createTime: true, // 是否生成创建时间
