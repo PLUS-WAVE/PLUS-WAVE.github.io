@@ -1,5 +1,5 @@
 ---
-title: OpenGL
+title: 📃 OpenGL实验笔记前言
 createTime: 2024/09/01 09:41:04
 permalink: /opengl/
 ---

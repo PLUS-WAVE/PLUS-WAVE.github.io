@@ -14,12 +14,44 @@ export const zhNotes = defineNotesConfig({
       link: '/cpp/',
       // 配置 笔记侧边导航栏，用于导航向笔记内的所有文档
       // 声明为 `auto` 的，将根据目录结构自动生成侧边栏导航
-      sidebar: 'auto'
+      sidebar: [
+        '',
+        {
+          dir: '1.面向对象高级开发 Part1',
+          text: '1.面向对象高级开发Part1',
+          icon: 'catppuccin:cpp',
+          collapsed: false,
+          items: 'auto',
+        },
+        {
+          dir: '2.面向对象高级开发 Part2',
+          text: '2.面向对象高级开发Part2',
+          icon: 'catppuccin:cpp-header',
+          collapsed: false,
+          items: 'auto',
+        },
+        {
+          dir: '3. STL & 泛式编程',
+          text: '3. STL & 泛式编程',
+          icon: 'codicon:library',
+          collapsed: false,
+          items: 'auto',
+        },
+      ]
     },
     {
       dir: 'OpenGL',
       link: '/opengl/',
-      sidebar: 'auto'
+      sidebar: [
+        '',
+        {
+          dir: 'OpenGL',
+          text: 'OpenGL实验笔记',
+          icon: 'devicon:opengl',
+          collapsed: false,
+          items: 'auto',
+        },
+      ]
     },
     {
       dir: '3DV Course',
