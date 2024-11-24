@@ -7,7 +7,10 @@ export const zhNavbar = defineNavbarConfig([
   { text: '🗄️归档', link: '/blog/archives/' },
   {
     text: '🗂️系列笔记',
-    items: [{ text: 'C++', link: '/notes/C++/' }]
+    items: [
+      { text: 'C++', link: '/notes/C++/', icon: 'vscode-icons:file-type-cpp3'},
+      { text: 'OpenGL', link: '/notes/OpenGL/', icon: 'devicon:opengl' },
+    ]
   },
 ])
 

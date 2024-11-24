@@ -16,6 +16,11 @@ export const zhNotes = defineNotesConfig({
       // 声明为 `auto` 的，将根据目录结构自动生成侧边栏导航
       sidebar: 'auto'
     },
+    {
+      dir: 'OpenGL',
+      link: '/opengl/',
+      sidebar: 'auto'
+    },
   ],
 })
 
