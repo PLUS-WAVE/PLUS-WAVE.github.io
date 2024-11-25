@@ -13,7 +13,7 @@ config:
         -
           theme: brand
           text: 📑Blogs
-          link: /blog/
+          link: /en/blog/
         -
           theme: alt
           text: Github →
