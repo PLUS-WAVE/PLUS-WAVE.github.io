@@ -26,6 +26,13 @@
   */
 }
 
+/** 图片居中显示 */
+.vp-doc img{
+  display: block !important;
+  margin: 0 auto !important;
+  /* max-width: 100%; */
+}
+
 /** 深色模式 */
 [data-theme="dark"] {
   /*
