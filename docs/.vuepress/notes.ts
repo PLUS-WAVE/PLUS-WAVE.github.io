@@ -67,6 +67,20 @@ export const zhNotes = defineNotesConfig({
         },
       ]
     },
+    {
+      dir: 'Experience',
+      link: '/experience/',
+      sidebar: [
+        '',
+        {
+          dir: 'Experience',
+          text: 'Experience Notes',
+          icon: 'fxemoji:bluebook',
+          collapsed: false,
+          items: 'auto',
+        },
+      ]
+    },
   ],
 })
 

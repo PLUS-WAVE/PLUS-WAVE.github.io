@@ -11,6 +11,7 @@ export const zhNavbar = defineNavbarConfig([
       { text: '3DV Course', link: '/notes/3DV Course/', icon: 'gis:cube-3d' },
       { text: 'C++', link: '/notes/C++/', icon: 'vscode-icons:file-type-cpp3'},
       { text: 'OpenGL', link: '/notes/OpenGL/', icon: 'devicon:opengl' },
+      { text: 'Experience', link: '/notes/Experience/', icon: 'fxemoji:bluebook' },
     ]
   },
 ])
