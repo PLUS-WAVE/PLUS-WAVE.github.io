@@ -73,9 +73,23 @@ export const zhNotes = defineNotesConfig({
       sidebar: [
         '',
         {
-          dir: 'Experience',
-          text: 'Experience Notes',
-          icon: 'fxemoji:bluebook',
+          dir: '1. Environment',
+          text: '1. Environment',
+          icon: 'noto:package',
+          collapsed: false,
+          items: 'auto',
+        },
+        {
+          dir: '2. Linux&Server',
+          text: '2. Linux&Server',
+          icon: 'skill-icons:linux-dark',
+          collapsed: false,
+          items: 'auto',
+        },
+        {
+          dir: '3. Applications',
+          text: '3. Applications',
+          icon: 'fluent-color:apps-16',
           collapsed: false,
           items: 'auto',
         },
