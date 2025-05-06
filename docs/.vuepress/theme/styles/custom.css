@@ -13,7 +13,10 @@
   /* --vp-c-text-3: rgba(60, 60, 67, .78); */
   /* --vp-custom-block-font-size: 17px; */
 }
-h1 {
+
+/* span, */
+h1.hero-name,
+p.hero-tagline {
   font-family: Inter;
 }
 
