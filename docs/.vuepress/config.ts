@@ -113,11 +113,11 @@ export default defineUserConfig({
         inputPosition: 'top',
       },
 
-      docsearch: {
-        appId: 'KUAFAFDPE6', 
-        apiKey: '9e98e45cdde339a2d430ce277cc2937a', 
-        indexName: 'plus-waveio', 
-      },
+      // docsearch: {
+      //   appId: 'KUAFAFDPE6', 
+      //   apiKey: '9e98e45cdde339a2d430ce277cc2937a', 
+      //   indexName: 'plus-waveio', 
+      // },
     },
   }),
 })

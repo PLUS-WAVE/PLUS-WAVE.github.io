@@ -1,29 +1,20 @@
+/* @import url('https://chinese-fonts-cdn.deno.dev/packages/lxgwwenkai/dist/LXGWWenKai-Regular/result.css');
+@import url('https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/style.min.css'); */
+/* @import url('https://cdn.jsdelivr.net/npm/@fontsource/cascadia-code@4.2.1/index.min.css'); */
+@import url('https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700,700italic&subset=latin,cyrillic-ext,cyrillic,latin-ext');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;700&display=swap');
+
 :root {
-  /** 主题颜色 */
-
-  /*
-  --vp-c-brand-1: #5086a1;
-  --vp-c-brand-2: #6aa1b7;
-  --vp-c-brand-3: #8cccd5;
-  --vp-c-brand-soft: rgba(131, 208, 218, 0.314);
-  */
-
-  /** 背景颜色 */
-
-  /*
-  --vp-c-bg: #fff;
-  --vp-c-bg-alt: #f6f6f7;
-  --vp-c-bg-elv: #fff;
-  --vp-c-bg-soft: #f6f6f7;
-  */
-
-  /** 文本颜色 */
-
-  /*
-  --vp-c-text-1: rgba(60, 60, 67);
-  --vp-c-text-2: rgba(60, 60, 67, 0.78);
-  --vp-c-text-3: rgba(60, 60, 67, 0.56);
-  */
+  /* --vp-font-family-base: "LXGW WenKai", sans-serif; */
+  /* --vp-font-family-base: "PT Serif",sans-serif; */
+  --vp-font-family-base: "Noto Serif SC", sans-serif;
+  /* --vp-font-family-mono: "Cascadia code";
+  font-optical-sizing: auto; */
+  /* --vp-c-text-3: rgba(60, 60, 67, .78); */
+  /* --vp-custom-block-font-size: 17px; */
+}
+h1 {
+  font-family: Inter;
 }
 
 /** 图片居中显示 */
@@ -31,6 +22,13 @@
   display: block !important;
   margin: 0 auto !important;
   /* max-width: 100%; */
+}
+
+.vp-doc ul,
+.vp-doc ol {
+  margin-left: 1.5em;
+  padding-left: 1.5em;
+  /* margin: 0 0 1.5em 1.5em; */
 }
 
 /** 深色模式 */
