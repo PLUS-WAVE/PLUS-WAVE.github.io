@@ -44,6 +44,13 @@ export default defineUserConfig({
       title: true, // 是否生成标题
     },
     
+    search: { 
+      provider: 'algolia',
+      appId: "I76E33RAQW",
+      apiKey: "2f441d2c2736f879a5fe5c73efdaaab5",
+      indexName: "plus-waveio",
+    },
+
     plugins: {
       git: true,
 
@@ -113,11 +120,11 @@ export default defineUserConfig({
         inputPosition: 'top',
       },
 
-      // docsearch: {
-      //   appId: 'KUAFAFDPE6', 
-      //   apiKey: '9e98e45cdde339a2d430ce277cc2937a', 
-      //   indexName: 'plus-waveio', 
-      // },
+      docsearch: {
+        appId: "I76E33RAQW",
+        apiKey: "5a647a9266ea269c5c219a4af315b3f3",
+        indexName: "plus-waveio",
+      },
     },
   }),
 })
