@@ -12,6 +12,20 @@
   font-optical-sizing: auto; */
   /* --vp-c-text-3: rgba(60, 60, 67, .78); */
   /* --vp-custom-block-font-size: 17px; */
+  --vp-mark-text: marktext;
+  --vp-mark-bg: "";
+  --vp-mark-bg-image:
+    linear-gradient(
+      to bottom,
+      transparent 25%,
+      var(--vp-c-brand-soft) 30%,
+      var(--vp-c-brand-soft) 50%,
+      var(--vp-c-brand-3) 75%,
+      var(--vp-c-brand-3) 90%,
+      var(--vp-c-brand-soft) 100%
+    );
+  --vp-mark-color: var(--vp-c-brand-3);
+  --vp-mark-color-soft: var(--vp-c-brand-soft);
 }
 
 /* span, */
@@ -32,6 +46,9 @@ p.hero-tagline {
   margin-left: 1.5em;
   padding-left: 1.5em;
   /* margin: 0 0 1.5em 1.5em; */
+}
+.vp-doc blockquote {
+  color: var(--vp-c-text-2);
 }
 
 /** 深色模式 */
@@ -55,4 +72,36 @@ p.hero-tagline {
   --vp-c-text-2: rgba(235, 235, 245, 0.6);
   --vp-c-text-3: rgba(235, 235, 245, 0.38);
   */
+}
+
+.vp-doc mark {
+  padding: 2px;
+  color: currentcolor;
+  background-color: transparent;
+  background-image:
+    linear-gradient(
+      to bottom,
+      transparent 25%,
+      var(--vp-mark-color-soft) 30%,
+      var(--vp-mark-color-soft) 50%,
+      var(--vp-mark-color) 75%,
+      var(--vp-mark-color) 90%,
+      var(--vp-mark-color-soft) 100%
+    );
+  background-repeat: no-repeat;
+  background-position: 0 1em;
+  border-bottom-right-radius: 4px;
+  border-bottom-left-radius: 4px;
+  animation: mark-highlight 1.5s 0.5s forwards;
+}
+
+
+@keyframes mark-highlight {
+  0% {
+    background-position: 0 1em;
+  }
+
+  100% {
+    background-position: 0 0;
+  }
 }
